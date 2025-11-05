@@ -1,103 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <!-- ✅ Basic Meta Tags (keep at top) -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ✅ Basic Meta Tags (keep at top) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- ✅ Google Site Verification -->
-  <meta name="google-site-verification" content="HnynDyts5ZY4COPR8q7T6pO9qvQhpOj3mCw2G14eIKg" />
 
-  <!-- ✅ Canonical URL -->
-  <link rel="canonical" href="https://papia-tech.github.io/LOOI_Robot/">
-  
-  <meta name="description" content="LOOI Robot – A cute interactive robot built with HTML, CSS, and JavaScript. Click buttons to explore 20+ emotional expressions like happy, sad, surprised, and more!">
-  <meta name="keywords" content="LOOI, AI, website, Python, your keywords">
-  <meta name="author" content="Papia Karmakar">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://papia-tech.github.io/LOOI_Robot/">
+    <!-- ✅ Canonical URL -->
+    <meta name="description"
+        content="Smart Scientific Calculator supporting trigonometry, logarithms, exponentials, factorials, permutations, and combinations, with automatic history saving.">
+    <meta name="author" content="Papia Karmakar">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://papia-tech.github.io/Scientific-Calculator/">
 
-  <!-- ✅ Favicon -->
-  <link rel="icon" href="favicon.png" type="image/png" sizes="16x16">
+    <!-- ✅ Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png" sizes="16x16">
 
-  <!-- ✅ Social Media: Open Graph -->
-  <meta property="og:title" content="Meet LOOI – A Cute Interactive Robot with Emotions">
-  <meta property="og:description" content="Explore LOOI, the cute robot that changes expressions with a click. Built using HTML, CSS, and JavaScript.">
-  <meta property="og:url" content="https://papia-tech.github.io/LOOI_Robot/">
-  <meta property="og:image" content="https://papia-tech.github.io/LOOI_Robot/looi-preview.png">
-  <meta property="og:type" content="website">
+    <!-- ✅ Social Media: Open Graph -->
+    <meta property="og:title" content="Smart Scientific Calculator with Persistent History">
+    <meta property="og:description"
+        content="Smart Scientific Calculator supporting trigonometry, logarithms, exponentials, factorials, permutations, and combinations, with automatic history saving.">
+    <meta property="og:url" content="https://papia-tech.github.io/Scientific-Calculator/">
+    <meta property="og:image" content="https://papia-tech.github.io/Scientific-Calculator/preview.png">
+    <meta property="og:type" content="website">
 
-  <!-- ✅ Social Media: Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Meet LOOI – A Cute Interactive Robot with Emotions">
-  <meta name="twitter:description" content="Explore LOOI, the cute robot that changes expressions with a click. Built using HTML, CSS, and JavaScript.">
-  <meta name="twitter:image" content="https://papia-tech.github.io/LOOI_Robot/looi-preview.png">
+    <!-- ✅ Social Media: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Smart Scientific Calculator with Persistent History">
+    <meta name="twitter:description"
+        content="Smart Scientific Calculator supporting trigonometry, logarithms, exponentials, factorials, permutations, and combinations, with automatic history saving.">
+    <meta name="twitter:image" content="https://papia-tech.github.io/Scientific-Calculator/preview.png">
 
-  <!-- ✅ Title -->
-  <title>Meet LOOI – A Cute Interactive Robot with Emotions | HTML, CSS, JS</title>
+    <!-- ✅ Title -->
+    <title>Smart Scientific Calculator with Persistent History | HTML, CSS, JS</title>
 
-  <!-- ✅ CSS (Keep at bottom of <head>) -->
-  <link rel="stylesheet" href="style.css">
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "url": "https://papia-tech.github.io/LOOI_Robot/",
-  "name": "LOOI – A Cute Interactive Robot",
-  "description": "Explore LOOI, the cute robot that changes expressions with a click. Built using HTML, CSS, and JavaScript.",
-  "publisher": {
-    "@type": "Person",
-    "name": "Papia Karmakar"
-  },
-  "image": {
-    "@type": "ImageObject",
-    "url": "https://papia-tech.github.io/LOOI_Robot/looi-preview.png",
-    "height": 630,
-    "width": 1200
-  }
-}
-</script>
+    <!--✅Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <!-- ✅ CSS (Keep at bottom of <head>) -->
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
-<body>
-  <div class="container">
-    <!-- Robot -->
-    <div class="robot-head" id="robotHead">
-      <div class="expression-icon" id="expressionIcon"></div>
-      <div class="eye left-eye" id="leftEye"></div>
-      <div class="eye right-eye" id="rightEye"></div>
-      <div class="mouth" id="mouth"></div>
-    </div>
+<body class="dark">
+    <div class="container">
+        <!-- History Panel -->
+        <div class="history" id="historyPanel">
+            <h1>History</h1>
+            <h2>History</h2>
+            <div id="historyList"></div>
+            <button class="clear-history" onclick="clearHistory()">Clear History</button>
+        </div>
 
-    <div class="tag" id="tag">
-      <marquee behaviour="scroll" direction="left">Change My Expression!</marquee>
-    </div>
+        <!-- Calculator -->
+        <div class="calculator">
+            <h1>Scientific Calculator
+                <button id="toggleBtn">🔘</button>
+            </h1>
+            <input type="text" id="display" placeholder="0" readonly />
 
-    <!-- Buttons neatly below the robot -->
-    <div class="controls">
-      <button onclick="setExpression('happy')">😊</button>
-      <button onclick="setExpression('sad')">😢</button>
-      <button onclick="setExpression('angry')">😠</button>
-      <button onclick="setExpression('surprised')">😲</button>
-      <button onclick="setExpression('neutral')">😐</button>
-      <button onclick="setExpression('love')">❤️</button>
-      <button onclick="setExpression('curious')">🧐</button>
-      <button onclick="setExpression('sleepy')">😴</button>
-      <button onclick="setExpression('furious')">😡</button>
-      <button onclick="setExpression('scared')">😨</button>
-      <button onclick="setExpression('flirty')">😍</button>
-      <button onclick="setExpression('crying')">😭</button>
-      <button onclick="setExpression('glitch')">🤖</button>
-      <button onclick="setExpression('sick')">😷</button>
-      <button onclick="setExpression('cool')">😎</button>
-      <button onclick="setExpression('celebration')">🥳</button>
-      <button onclick="setExpression('nervous')">😬</button>
-      <button onclick="setExpression('blank')">🫥</button>
-      <button onclick="setExpression('shocked')">🤯</button>
-    </div>
-  </div>
+            <div class="buttons">
+                <button onclick="appendPermutation()">nPr</button>
+                <button onclick="appendCombination()">nCr</button>
+                <button onclick="memoryClear()">MC</button>
+                <button onclick="memoryRecall()">MR</button>
+                <button onclick="memoryAdd()">M+</button>
+                <button onclick="memorySubtract()">M-</button>
 
-  <!-- JS Files -->
-  <script src="script.js"></script>
+                <button onclick="appendFactorial()">n!</button>
+                <button onclick="square()">x²</button>
+                <button onclick="appendNthRootPrefix()"><sup>n</sup>√</button>
+                <button onclick="appendPower()">^</button>
+                <button onclick="appendSqrt()">√</button>
+                <button onclick="appendValue('%')">%</button>
+
+                <button onclick="appendTrig('sin')">sin</button>
+                <button onclick="appendTrig('cos')">cos</button>
+                <button onclick="appendTrig('tan')">tan</button>
+                <button onclick="appendLogarithmic('log')">log</button>
+                <button onclick="appendLogarithmic('ln')">ln</button>
+                <button onclick="appendExp()">eˣ</button>
+
+                <button onclick="appendTrig('asin')">asin</button>
+                <button onclick="appendTrig('acos')">acos</button>
+                <button onclick="appendTrig('atan')">atan</button>
+                <button onclick="appendSymbol('π','Math.PI')">π</button>
+                <button onclick="appendSymbol('e','Math.E')">e</button>
+                <button onclick="reciprocal()">1/x</button>
+
+                <div class="space"></div>
+
+                <button onclick="appendValue('7')">7</button>
+                <button onclick="appendValue('8')">8</button>
+                <button onclick="appendValue('9')">9</button>
+                <button id="toggleDegRad" onclick="toggleDegRad()">DEG</button>
+                <button onclick="deleteLast()">DEL</button>
+                <button class="white" onclick="clearDisplay()">C</button>
+
+                <button onclick="appendValue('4')">4</button>
+                <button onclick="appendValue('5')">5</button>
+                <button onclick="appendValue('6')">6</button>
+                <button onclick="appendValue('(')">(</button>
+                <button onclick="appendValue(')')">)</button>
+                <button onclick="appendValue(lastAns)">Ans</button>
+
+                <button onclick="appendValue('1')">1</button>
+                <button onclick="appendValue('2')">2</button>
+                <button onclick="appendValue('3')">3</button>
+                <button onclick="appendSymbol('×','*')">×</button>
+                <button onclick="appendSymbol('÷','/')">÷</button>
+
+                <button onclick="appendValue('0')">0</button>
+                <button onclick="appendValue('.')">.</button>
+                <button onclick="multiplyTenPower()">×10<sup>x</sup></button>
+                <button onclick="appendSymbol('+','+')">+</button>
+                <button onclick="appendSymbol('−','-')">−</button>
+                <button class="double" onclick="calculateResult()">=</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>
